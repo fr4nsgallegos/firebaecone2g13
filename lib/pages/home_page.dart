@@ -127,6 +127,34 @@ class HomePage extends StatelessWidget {
               },
               child: Text("Inserción con id específico"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                userReference
+                    .doc("user_1234562")
+                    .update({"age": 31})
+                    .then((value) {
+                      print("Usuario actualizado correctamente");
+                    })
+                    .catchError((error) {
+                      print("Error al actualizar el usuario: $error");
+                    });
+              },
+              child: Text("Actualizar un usuario"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                userReference
+                    .doc("1PWbHs8po2GiW0foV2mA")
+                    .delete()
+                    .then((value) {
+                      print("Usuario eliminado correctamente");
+                    })
+                    .catchError((error) {
+                      print("Error al eliminar el usuario: $error");
+                    });
+              },
+              child: Text("Eliminar un usuario"),
+            ),
           ],
         ),
       ),
