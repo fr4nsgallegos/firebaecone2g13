@@ -66,6 +66,28 @@ class HomePage extends StatelessWidget {
               },
               child: Text("Obtener informacioón filtrada"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                // Agregrando un usuario directamente desde un mapa
+                userReference
+                    .add({
+                      "name": "Ana",
+                      "lastname": "Lopez",
+                      "age": 25,
+                      "weight": 60.5,
+                      "nationality": "chilena",
+                    })
+                    .then((value) {
+                      print(value);
+                      print(value.id);
+                      print("Usuario agregado correctamente");
+                    })
+                    .catchError((error) {
+                      print("Error al agregar el usuario: $error");
+                    });
+              },
+              child: Text("Agregar un usuario"),
+            ),
           ],
         ),
       ),
