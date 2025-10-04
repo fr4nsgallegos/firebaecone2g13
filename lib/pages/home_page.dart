@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebaecone2g13/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,8 +22,21 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 userReference.get().then((value) {
                   List<QueryDocumentSnapshot> docs = value.docs;
-                  docs.forEach((doc) {
-                    print(doc.data());
+                  // docs.forEach((doc) {
+                  //   print(doc.data());
+                  // });
+                  List<UserModel> usersModelList = docs.map((doc) {
+                    return UserModel.fromMap(
+                      doc.data() as Map<String, dynamic>,
+                    );
+                  }).toList();
+                  usersModelList.forEach((user) {
+                    print(user.name);
+                    print(user.lastname);
+                    print(user.age);
+                    print(user.weight);
+                    print(user.nationality);
+                    print('---');
                   });
                 });
               },
