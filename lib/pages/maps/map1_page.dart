@@ -94,6 +94,7 @@ class _Map1PageState extends State<Map1Page> {
                 ),
                 onTap: (LatLng latlng) {
                   Marker newMarker = Marker(
+                    icon: _customMarker!,
                     markerId: MarkerId(markers.length.toString()),
                     position: latlng,
                     infoWindow: InfoWindow(
