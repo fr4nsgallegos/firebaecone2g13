@@ -107,6 +107,26 @@ class HomePage extends StatelessWidget {
               },
               child: Text("Agregar un usuario"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                userReference
+                    .doc("1PWbHs8po2GiW0foV2mA")
+                    .set({
+                      "name": "Merlina",
+                      "lastname": "Addams",
+                      "age": 28,
+                      "weight": 54.3,
+                      "nationality": "estadounidense",
+                    })
+                    .then((value) {
+                      print("Usuario agregado con id específico");
+                    })
+                    .catchError((error) {
+                      print("Error al agregar el usuario: $error");
+                    });
+              },
+              child: Text("Inserción con id específico"),
+            ),
           ],
         ),
       ),
