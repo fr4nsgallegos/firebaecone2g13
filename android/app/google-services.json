@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "139574129569",
+    "project_id": "groupg13-62598",
+    "storage_bucket": "groupg13-62598.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139574129569:android:386e554ab74893285ed1e0",
+        "android_client_info": {
+          "package_name": "com.g13.firebaecone2g13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvcaerUH_teMBwh1LhZzcU3tSTL131o8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139574129569:android:8bd1accef7161f0c5ed1e0",
+        "android_client_info": {
+          "package_name": "com.g13.firebaseconng13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvcaerUH_teMBwh1LhZzcU3tSTL131o8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139574129569:android:d9f48ac68c46e1ce5ed1e0",
+        "android_client_info": {
+          "package_name": "com.pruebag13.firebaseconectiong13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvcaerUH_teMBwh1LhZzcU3tSTL131o8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
