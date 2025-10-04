@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebaecone2g13/pages/streams/contador_stream_controller.dart';
 import 'package:flutter/material.dart';
 
 class StreamFirestorePage extends StatelessWidget {
@@ -68,6 +69,18 @@ class StreamFirestorePage extends StatelessWidget {
                 },
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ContadorStreamController(),
+                  ),
+                );
+              },
+              child: Text("Contador StreamController"),
+            ),
+            SizedBox(height: 32),
           ],
         ),
       ),
