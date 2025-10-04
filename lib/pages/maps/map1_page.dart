@@ -60,21 +60,24 @@ class _Map1PageState extends State<Map1Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: GoogleMap(
-          initialCameraPosition: CameraPosition(
-            target: currentPosition != null
-                ? LatLng(currentPosition!.latitude, currentPosition!.longitude)
-                : LatLng(-12.031869, -76.926042),
-            zoom: 12,
-          ),
-          markers: {
-            // Marker(
-            //   markerId: MarkerId("1"),
-            //   position: LatLng(-12.031869, -76.926042),
-            // ),
-            if (myPositionMarker != null) myPositionMarker!,
-          },
-        ),
+        child: currentPosition == null
+            ? CircularProgressIndicator()
+            : GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
+                    currentPosition!.latitude,
+                    currentPosition!.longitude,
+                  ),
+                  zoom: 12,
+                ),
+                markers: {
+                  // Marker(
+                  //   markerId: MarkerId("1"),
+                  //   position: LatLng(-12.031869, -76.926042),
+                  // ),
+                  if (myPositionMarker != null) myPositionMarker!,
+                },
+              ),
       ),
     );
   }
