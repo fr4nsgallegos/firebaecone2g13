@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebaecone2g13/models/user_model.dart';
+import 'package:firebaecone2g13/pages/future_list_page.dart';
+import 'package:firebaecone2g13/pages/maps/map1_page.dart';
 import 'package:firebaecone2g13/pages/streams/stream_firestore_page.dart';
 import 'package:flutter/material.dart';
 
@@ -166,6 +168,24 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: Text("Streams"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FutureListPage()),
+                );
+              },
+              child: Text("Future List"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Map1Page()),
+                );
+              },
+              child: Text("Mapa 1 Page"),
             ),
           ],
         ),
