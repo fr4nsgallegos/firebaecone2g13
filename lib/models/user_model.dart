@@ -22,4 +22,14 @@ class UserModel {
       nationality: map['nationality'] ?? '',
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "lastname": lastname,
+      "age": age,
+      "weight": weight,
+      "nationality": nationality,
+    };
+  }
 }

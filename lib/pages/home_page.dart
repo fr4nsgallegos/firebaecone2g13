@@ -69,14 +69,33 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Agregrando un usuario directamente desde un mapa
+                // userReference
+                //     .add({
+                //       "name": "Ana",
+                //       "lastname": "Lopez",
+                //       "age": 25,
+                //       "weight": 60.5,
+                //       "nationality": "chilena",
+                //     })
+                //     .then((value) {
+                //       print(value);
+                //       print(value.id);
+                //       print("Usuario agregado correctamente");
+                //     })
+                //     .catchError((error) {
+                //       print("Error al agregar el usuario: $error");
+                //     });
+
+                // Agregando un usuario desde un modelo
+                UserModel newUser = UserModel(
+                  name: "Carlos",
+                  lastname: "Gonzales",
+                  age: 30,
+                  weight: 75.5,
+                  nationality: "peruano",
+                );
                 userReference
-                    .add({
-                      "name": "Ana",
-                      "lastname": "Lopez",
-                      "age": 25,
-                      "weight": 60.5,
-                      "nationality": "chilena",
-                    })
+                    .add(newUser.toMap())
                     .then((value) {
                       print(value);
                       print(value.id);
