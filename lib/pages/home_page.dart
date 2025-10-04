@@ -42,6 +42,28 @@ class HomePage extends StatelessWidget {
               },
               child: Text('Obtener información'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                userReference.where("age", isGreaterThan: 19).get().then((
+                  value,
+                ) {
+                  List<QueryDocumentSnapshot> docs = value.docs;
+                  List<UserModel> usersModelList = docs.map((doc) {
+                    return UserModel.fromMap(
+                      doc.data() as Map<String, dynamic>,
+                    );
+                  }).toList();
+
+                  usersModelList.forEach((user) {
+                    print(user.name);
+                    print(user.lastname);
+                    print(user.age);
+                    print(user.weight);
+                  });
+                });
+              },
+              child: Text("Obtener informacioón filtrada"),
+            ),
           ],
         ),
       ),
