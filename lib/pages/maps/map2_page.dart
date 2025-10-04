@@ -1,4 +1,5 @@
 import 'package:custom_info_window/custom_info_window.dart';
+import 'package:firebaecone2g13/pages/maps/model_maps.dart/home_controller.dart';
 import 'package:firebaecone2g13/pages/maps/model_maps.dart/place_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,7 +15,7 @@ class _Map2PageState extends State<Map2Page> {
   Set<Marker> markers = {};
   CustomInfoWindowController _customInfoWindowController =
       CustomInfoWindowController();
-
+  final _mapController = HomeController();
   Future<void> addMarkers() async {
     Set<Marker> auxMarkers = Set();
 
@@ -51,7 +52,40 @@ class _Map2PageState extends State<Map2Page> {
                   border: Border.all(color: Colors.blueAccent),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text("Hola"),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                      child: Image.network(
+                        place.urlImage,
+                        width: 250,
+                        height: 80,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            place.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(place.services, style: TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               place.position,
             );
@@ -78,6 +112,7 @@ class _Map2PageState extends State<Map2Page> {
         children: [
           GoogleMap(
             onMapCreated: (GoogleMapController controller) async {
+              _mapController.onMapCreated(controller);
               _customInfoWindowController.googleMapController = controller;
             },
             initialCameraPosition: CameraPosition(
