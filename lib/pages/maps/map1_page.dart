@@ -14,6 +14,25 @@ class _Map1PageState extends State<Map1Page> {
 
   Marker? myPositionMarker;
   Set<Marker> markers = {};
+  BitmapDescriptor? _customMarker;
+
+  Future<void> _setCustomMarker() async {
+    _customMarker = await BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(size: Size(48, 48)),
+      'assets/markers/orange.png',
+    );
+    markers.add(
+      Marker(
+        markerId: MarkerId(markers.length.toString()),
+        position: LatLng(currentPosition!.latitude, currentPosition!.longitude),
+        icon: _customMarker!,
+        infoWindow: InfoWindow(
+          title: "Marcador personalizado",
+          snippet: "Ubicación en Lima",
+        ),
+      ),
+    );
+  }
 
   Future<void> getPosition() async {
     bool serviceEnabled;
@@ -41,11 +60,12 @@ class _Map1PageState extends State<Map1Page> {
       Position position = await Geolocator.getCurrentPosition();
       print('Lat: ${position.latitude}, Lng: ${position.longitude}');
       currentPosition = position;
-      myPositionMarker = Marker(
-        markerId: MarkerId("myPosition"),
-        position: LatLng(position.latitude, position.longitude),
-      );
-      markers.add(myPositionMarker!);
+      // myPositionMarker = Marker(
+      //   markerId: MarkerId("myPosition"),
+      //   position: LatLng(position.latitude, position.longitude),
+      // );
+      // markers.add(myPositionMarker!);
+      _setCustomMarker();
       setState(() {});
     } catch (e) {
       print('Error: $e');
@@ -76,6 +96,11 @@ class _Map1PageState extends State<Map1Page> {
                   Marker newMarker = Marker(
                     markerId: MarkerId(markers.length.toString()),
                     position: latlng,
+                    infoWindow: InfoWindow(
+                      title: "Marcador: ${markers.length}",
+                      snippet:
+                          "Lat: ${latlng.latitude}, Lng: ${latlng.longitude}",
+                    ),
                   );
                   markers.add(newMarker);
                   setState(() {});
