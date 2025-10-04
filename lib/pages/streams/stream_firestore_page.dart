@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebaecone2g13/pages/streams/contador_stream_controller.dart';
 import 'package:firebaecone2g13/pages/streams/multiple_stream_controller.dart';
+import 'package:firebaecone2g13/pages/streams/temporizador_stream.dart';
 import 'package:flutter/material.dart';
 
 class StreamFirestorePage extends StatelessWidget {
@@ -91,6 +92,15 @@ class StreamFirestorePage extends StatelessWidget {
                 );
               },
               child: Text("Multiples Streams"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TemporizadorStream()),
+                );
+              },
+              child: Text("temporizador stream"),
             ),
             SizedBox(height: 32),
           ],
