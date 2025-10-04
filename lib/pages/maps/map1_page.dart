@@ -13,6 +13,7 @@ class _Map1PageState extends State<Map1Page> {
   Position? currentPosition;
 
   Marker? myPositionMarker;
+  Set<Marker> markers = {};
 
   Future<void> getPosition() async {
     bool serviceEnabled;
@@ -44,6 +45,7 @@ class _Map1PageState extends State<Map1Page> {
         markerId: MarkerId("myPosition"),
         position: LatLng(position.latitude, position.longitude),
       );
+      markers.add(myPositionMarker!);
       setState(() {});
     } catch (e) {
       print('Error: $e');
@@ -70,13 +72,22 @@ class _Map1PageState extends State<Map1Page> {
                   ),
                   zoom: 12,
                 ),
-                markers: {
-                  // Marker(
-                  //   markerId: MarkerId("1"),
-                  //   position: LatLng(-12.031869, -76.926042),
-                  // ),
-                  if (myPositionMarker != null) myPositionMarker!,
+                onTap: (LatLng latlng) {
+                  Marker newMarker = Marker(
+                    markerId: MarkerId(markers.length.toString()),
+                    position: latlng,
+                  );
+                  markers.add(newMarker);
+                  setState(() {});
                 },
+                markers: markers,
+                //  {
+                // Marker(
+                //   markerId: MarkerId("1"),
+                //   position: LatLng(-12.031869, -76.926042),
+                // ),
+                // if (myPositionMarker != null) myPositionMarker!,
+                // },
               ),
       ),
     );
