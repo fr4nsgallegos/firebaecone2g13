@@ -51,7 +51,9 @@ class StreamFirestorePage extends StatelessWidget {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  userReference.doc(docs[index].id).delete();
+                                },
                                 icon: Icon(
                                   Icons.delete,
                                   color: Colors.redAccent,
